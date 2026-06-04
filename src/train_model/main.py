@@ -7,28 +7,26 @@ def main() -> None:
     
     mileage_min = df_normalized.iloc[:, 0].min()
     mileage_max = df_normalized.iloc[:, 0].max()
-    df_normalized.iloc[:, 0] = (df_normalized.iloc[:, 0] - mileage_min) / (mileage_max - mileage_min)
+    mileage_range = mileage_max - mileage_min
+    df_normalized.iloc[:, 0] = (df_normalized.iloc[:, 0] - mileage_min) / mileage_range
     
     price_min = df_normalized.iloc[:, 1].min()
     price_max = df_normalized.iloc[:, 1].max()
-    df_normalized.iloc[:, 1] = (df_normalized.iloc[:, 1] - price_min) / (price_max - price_min)
+    price_range = price_max - price_min
+    df_normalized.iloc[:, 1] = (df_normalized.iloc[:, 1] - price_min) / price_range
     
     T0, T1 = linear_regression(df_normalized)
-    print(T0, T1)
 
-    with open("../output.txt", "w") as f:
-        print(str(T0), file=f)
-        print(str(T1), file=f)
 
-    mileage_input = 100000
-    mileage_normalized = (mileage_input - mileage_min) / (mileage_max - mileage_min)
-    price_normalized = T0 + (T1 * mileage_normalized)
-    price_real = (price_normalized * (price_max - price_min)) + price_min
-    print(f"Estimated price: ${price_real}")
+    T1_real = T1 * (price_range / mileage_range)
+    T0_real = price_min + (price_range * T0) - (T1_real * mileage_min)
 
-    with open("output.txt") as f:
-        tmp = f.read()
-        splt = tmp.split('\n')
-        print(float(splt[1]))
+    print(T0_real, T1_real)
+
+    with open("output.txt", "w") as f:
+        print(str(T0_real), file=f)
+        print(str(T1_real), file=f)
+
+
 if __name__ == "__main__":
     main()
