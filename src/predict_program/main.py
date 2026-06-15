@@ -5,6 +5,7 @@ def main() -> None:
 
 
     try:
+        print("Welcome to the prediction program. Enter the mileage of your car :")
         mileage = float(input())
     except (ValueError, TypeError, KeyboardInterrupt, EOFError) as err:
         print("Error: thanks to enter a valid input\n", err)

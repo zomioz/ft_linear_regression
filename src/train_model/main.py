@@ -2,6 +2,13 @@ from load import load
 from linear_function import linear_regression
 
 def main() -> None:
+
+    '''
+    Main function it load the data file and execute an linear regression on it
+    argument : None
+    return : None
+    '''
+
     df = load("data.csv")
     df_normalized = df.astype(float)
     
@@ -15,13 +22,14 @@ def main() -> None:
     price_range = price_max - price_min
     df_normalized.iloc[:, 1] = (df_normalized.iloc[:, 1] - price_min) / price_range
     
-    T0, T1 = linear_regression(df_normalized)
+    number_of_iteration = 1000
+    T0, T1 = linear_regression(df_normalized, number_of_iteration)
 
 
     T1_real = T1 * (price_range / mileage_range)
     T0_real = price_min + (price_range * T0) - (T1_real * mileage_min)
 
-    print(T0_real, T1_real)
+    print("After the linear regression", T0_real, T1_real)
 
     with open("output.txt", "w") as f:
         print(str(T0_real), file=f)
