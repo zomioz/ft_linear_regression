@@ -1,3 +1,20 @@
+from load import load
+from get_value import get_value
+
+def calculate_precision():
+
+    df = load("data.csv")
+    T0, T1 = get_value("output_bonus.txt")
+
+    true_price = df["price"]
+    predicted_price = T0 + T1 * df["km"]
+
+    mse = calculate_mse(true_price, predicted_price)
+    rmse = mse ** 0.5
+    r2 = calculate_r2(true_price, predicted_price)
+    return mse, rmse, r2
+
+
 def calculate_mse(true_price, predicted_price):
 
     total = 0
@@ -8,6 +25,7 @@ def calculate_mse(true_price, predicted_price):
         total += error * error
 
     return total / n
+
 
 def calculate_r2(true_price, predicted_price):
 
