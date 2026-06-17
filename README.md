@@ -41,7 +41,15 @@ Before training, data is **normalized** (scaled between 0-1) to improve performa
 
 ### Quick Start
 
-#### 1. Train the model
+#### 1. Installation of the venv
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### 2. Train the model
 
 ```bash
 python3 src/train_model/main.py
@@ -49,7 +57,7 @@ python3 src/train_model/main.py
 
 This trains the model and saves parameters to `output.txt`
 
-#### 2. Make predictions
+#### 3. Make predictions
 
 ```bash
 python3 src/predict_program/main.py
