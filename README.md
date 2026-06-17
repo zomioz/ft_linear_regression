@@ -71,6 +71,7 @@ predict_program/
 An interactive interface with visualization and performance metrics.
 
 ```bash
+source ./venv/bin/activate
 python3 src/bonus/main_bonus.py
 ```
 
