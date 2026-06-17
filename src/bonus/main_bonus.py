@@ -3,6 +3,12 @@ from gui import display_gui
 
 def main() -> None:
 
+    '''
+    main function that launch the GUI
+    Argument: None
+    Return: None
+    '''
+
     display_gui()
 
 

@@ -1,7 +1,13 @@
-from load import load
-from get_value import get_value
+from load_bonus import load
+from get_value_bonus import get_value
 
 def calculate_precision():
+
+    '''
+    Function that calculate the precision of an linear regression model using RMSE, MSE and R2
+    Argument: None
+    Return: 3 values : MSE, RMSE, R2
+    '''
 
     df = load("data.csv")
     T0, T1 = get_value("output_bonus.txt")
@@ -17,6 +23,12 @@ def calculate_precision():
 
 def calculate_mse(true_price, predicted_price):
 
+    '''
+    Function that calculate MSE value : Mean squared error
+    Argument: True Prices from .csv and Predicted_price from linear regression function
+    Return: MSE value
+    '''
+
     total = 0
     n = len(true_price)
 
@@ -29,6 +41,12 @@ def calculate_mse(true_price, predicted_price):
 
 def calculate_r2(true_price, predicted_price):
 
+    '''
+    Function that calculate R2 value : 
+    Argument : True Prices from .csv and Predicted_price from linear regression function
+    Return: R2 Value
+    '''
+
     n = len(true_price)
 
     total = 0
@@ -36,16 +54,16 @@ def calculate_r2(true_price, predicted_price):
         total += true_price[i]
     mean_true = total / n
 
-    sse = 0
-    sst = 0
+    ss_res = 0
+    ss_tot = 0
     for i in range(n):
         error = true_price[i] - predicted_price[i]
-        sse += error * error
+        ss_res += error * error
 
         diff = true_price[i] - mean_true
-        sst += diff * diff
+        ss_tot += diff * diff
 
-    if sst == 0:
+    if ss_tot == 0:
         return 0
 
-    return 1 - (sse / sst)
+    return 1 - (ss_res / ss_tot)

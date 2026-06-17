@@ -3,6 +3,11 @@ from get_value import get_value
 
 def main() -> None:
 
+    '''
+    main function that calculate the price of a car based on a linear regression model
+    argument: None
+    return: None
+    '''
 
     try:
         print("Welcome to the prediction program. Enter the mileage of your car :")

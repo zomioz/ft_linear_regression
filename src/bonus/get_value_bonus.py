@@ -1,5 +1,11 @@
 def get_value(path: str) -> tuple[float, float]:
 
+    '''
+    fuction that gather linear regression output from a file
+    argument: path of the file
+    return: a Tuple that contain both θ
+    '''
+
     try:
         open(path)
     except (FileNotFoundError, PermissionError, IsADirectoryError):

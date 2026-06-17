@@ -1,9 +1,14 @@
 import matplotlib.pyplot as plt
-from get_value import get_value
-from load import load
-from get_value import get_value
+from get_value_bonus import get_value
+from load_bonus import load
 
 def create_image():
+
+    '''
+    Function that create graphics in .png from a .csv and an output linear regresion file
+    Argument: None
+    return: None
+    '''
 
     df = load("data.csv")
     T0, T1 = get_value("output_bonus.txt")
