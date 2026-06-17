@@ -27,7 +27,15 @@ The algorithm uses **gradient descent** to find the best parameters:
 1. Start with random values for θ₀ and θ₁
 2. Make predictions and calculate errors
 3. Adjust θ₀ and θ₁ to reduce errors
-4. Repeat X times until the model converges
+4. Repeat until the model converges
+
+**What are θ₀ and θ₁?**
+
+In gradient descent, we're trying to find the best values for these two numbers:
+- **θ₀** (theta zero): The starting point of our line (y-intercept). Think of it as "the base price"
+- **θ₁** (theta one): The slope of our line. Think of it as "how much the price changes for each km"
+
+The algorithm slowly adjusts both values little by little to make the predictions better and better.
 
 Before training, data is **normalized** (scaled between 0-1) to improve performance.
 
