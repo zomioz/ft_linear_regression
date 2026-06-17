@@ -10,6 +10,8 @@ def main() -> None:
     '''
 
     df = load("data.csv")
+    if df is None:
+        return
     df_normalized = df.astype(float)
     
     mileage_min = df_normalized.iloc[:, 0].min()
