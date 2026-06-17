@@ -44,7 +44,7 @@ Before training, data is **normalized** (scaled between 0-1) to improve performa
 #### 1. Installation of the venv
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
