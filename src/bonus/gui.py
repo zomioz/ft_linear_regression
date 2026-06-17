@@ -144,4 +144,10 @@ def display_gui():
 
     except KeyboardInterrupt:
         print("Programme interrompu par l'utilisateur (Ctrl+C)")
+        files_to_remove = ['bonus_regression_all.png', 'bonus_regression_linearfunction.png', 'bonus_regression_scatter.png', 'output_bonus.txt']
+        for file in files_to_remove:
+            try:
+                os.remove(file)
+            except FileNotFoundError:
+                continue
         window.close()
