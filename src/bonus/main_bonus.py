@@ -1,4 +1,4 @@
-from gui import display_gui
+from gui_bonus import display_gui
 
 
 def main() -> None:
